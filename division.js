@@ -2,7 +2,17 @@ function divide(number, div) {
   if (!div) throw "ArgumentOutOfRangeException";
   
   if (!number) return 0;
-  if (div === 1) return number;
+  
+  let neg = false;
+  if (div < 0) {
+    div = Math.abs(div);
+    neg = !neg;
+  }
+  
+  if (number < 0) {
+    number = Math.abs(number);
+    neg = !neg;
+  }
   
   let result = 0;
   let counter = 0;
@@ -11,6 +21,10 @@ function divide(number, div) {
     if (result <= number) {
       counter++;
     }
+  }
+  
+  if (neg) {
+    counter -= counter - counter;
   }
   
   return counter;

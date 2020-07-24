@@ -14,29 +14,26 @@ function divide(number, div) {
     negMult *= negMult;
   }
   
-  let mult = 1;
-  let max = mult * div;
-  while (max < number) {
-    mult *= 2;
-    max = mult * div;
+  let mults = [1];
+  while (mults[mults.length - 1] * div < number) {
+    mults.push(mults[mults.length - 1]  * 2);
   }
 
   let result = 0;
   while (number > 0) {
-    if (number < max) {
-      if (mult == 1) {
+    if (number < mults[mults.length - 1] * div) {
+      if (mults.length == 1) {
         break;
       }
-      mult /= 2;
-      max /= 2;
+      mults.pop();
       continue;
     }
-    if (number === max) {
-       result += mult;
+    if (number === mults[mults.length - 1] * div) {
+       result += mults[mults.length - 1];
        break;
     }
-    number -= max;
-    result += mult;
+    number -= mults[mults.length - 1] * div;
+    result += mults[mults.length - 1];
   }
   
   result *= negMult;

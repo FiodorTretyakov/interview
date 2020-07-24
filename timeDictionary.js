@@ -2,15 +2,15 @@ class timeDictionary {
   constructor() {
     this.dict = {};
     this.validateKey = function(key) {
-       if (!key || key.length) throw new "ArgumentOutOfRangeException";
+       if (!key || !key.length) throw new "ArgumentOutOfRangeException";
     }
   }
   
   put(key, value) {
-    validateKey(key);
+    this.validateKey(key);
     
-    if (!dict[key]) {
-      dict[key] = {
+    if (!this.dict[key]) {
+      this.dict[key] = {
         "timestamp": 0,
         "values": {
           "0": value
@@ -19,17 +19,17 @@ class timeDictionary {
       return;
     }
     
-    if (dict[key].values[dict[key].timestamp] != value) {
-      dict[key].timestamp++;
-      dict[key][dict[key].timestamp] = value;
+    if (this.dict[key].values[this.dict[key].timestamp] != value) {
+      this.dict[key].timestamp++;
+      this.dict[key][this.dict[key].timestamp] = value;
     }
   }
   
   get(key, time) {
-    validateKey(key);
+    this.validateKey(key);
     
-    if (!dict[key] || timestamp > dict[key].timestamp) throw new "ArgumentOutOfRangeException";
-    return dict[key].values[dict[key].timestamp];
+    if (!this.dict[key] || timestamp > this.dict[key].timestamp) throw new "ArgumentOutOfRangeException";
+    return this.dict[key].values[this.dict[key].timestamp];
   }
 }
 

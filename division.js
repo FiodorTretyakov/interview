@@ -14,36 +14,37 @@ function divide(number, div) {
     negMult *= negMult;
   }
   
-  let result = 0;
-  let counter = 1;
-  do {
-    result += counter * div;
-  } while (result < number) {
-      counter *= 2;
+  let mult = 1;
+  let max = mult * div;
+  while (max < number) {
+    mult *= 2;
+    max = mult * div;
   }
 
   let result = 0;
   while (number > 0) {
-    if (number < result) {
-      result /= 2;
+    if (number < max) {
+      if (mult == 1) {
+        break;
+      }
+      mult /= 2;
+      max /= 2;
       continue;
     }
-    if (number === result) {
-      return result + counter;
+    if (number === max) {
+       result += mult;
+       break;
     }
-    number -= result / 2;
-    result += --counter;
+    number -= max;
+    result += mult;
   }
   
-  counter *= negMult;
+  result *= negMult;
   
-  return counter;
+  return result;
 }
 
 console.log(divide(0, 5));
-console.log(divide(0, 0));
 console.log(divide(5, 1));
 console.log(divide(8, 2));
 console.log(divide(15, 4));
-
-//not working

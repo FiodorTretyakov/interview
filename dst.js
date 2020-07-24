@@ -12,13 +12,15 @@ function dst(root) {
       continue;
     }
     
-    for (let i = 0; i < v.children.length; i++) {
-      let e = v.children[i];
-      e.path = v.path.concat([v.value]);
-      stack.push(e);
+    if (v.children && v.children.length) {
+      for (let i = 0; i < v.children.length; i++) {
+        let e = v.children[i];
+        e.path = v.path.concat([v.value]);
+        stack.push(e);
+      }
     }
     
-    if (!v.children.length && (!minPath || v.path.length + 1 < minPath.length)) {
+    if ((!v.children || !v.children.length) && (!minPath || v.path.length + 1 < minPath.length)) {
       minPath = v.path.concat([v.value]);
     }
   }
@@ -27,6 +29,7 @@ function dst(root) {
 }
 
 let root = {
- "value" : 1
- "children": [{}]
+ "value" : 1,
+ "children": [{"value": 2, "children": [{"value": 3}]}, {"value": 3, "children": [{"value": 4}]}]
 };
+console.log(dst(root))

@@ -9,7 +9,7 @@ function fetchRandomNode(headNode) {
   let r = Math.floor(Math.random() * (counter + 1));
   counter = 0;
   while (counter != r) {
- 		headNode = headNode.next;
+  	headNode = headNode.next;
   }
   
   return headNode;

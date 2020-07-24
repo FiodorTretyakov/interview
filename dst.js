@@ -25,3 +25,8 @@ function dst(root) {
   
   return minPath;
 }
+
+let root = {
+ "value" : 1
+ "children": [{}]
+};

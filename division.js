@@ -3,29 +3,39 @@ function divide(number, div) {
   
   if (!number) return 0;
   
-  let neg = false;
+  let negMult = 1;
   if (div < 0) {
     div = Math.abs(div);
-    neg = !neg;
+    negMult = -1;
   }
   
   if (number < 0) {
     number = Math.abs(number);
-    neg = !neg;
+    negMult *= negMult;
   }
   
   let result = 0;
-  let counter = 0;
-  while (result < number) {
-    result += div;
-    if (result <= number) {
-      counter++;
+  let counter = 1;
+  do {
+    result += counter * div;
+  } while (result < number) {
+      counter *= 2;
+  }
+
+  let result = 0;
+  while (number > 0) {
+    if (number < result) {
+      result /= 2;
+      continue;
     }
+    if (number === result) {
+      return result + counter;
+    }
+    number -= result / 2;
+    result += --counter;
   }
   
-  if (neg) {
-    counter -= counter - counter;
-  }
+  counter *= negMult;
   
   return counter;
 }

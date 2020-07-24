@@ -20,7 +20,7 @@ function dst(root) {
       }
     }
     
-    if ((!v.children || !v.children.length) && (!minPath || v.path.length + 1 < minPath.length)) {
+    if (v.end && (!minPath || v.path.reduce((e, s) => e + s, 0) + 1 < minPath.reduce((e, s) => e + s, 0))) {
       minPath = v.path.concat([v.value]);
     }
   }
@@ -30,6 +30,6 @@ function dst(root) {
 
 let root = {
  "value" : 1,
- "children": [{"value": 2, "children": [{"value": 3}]}, {"value": 3, "children": [{"value": 4}]}]
+ "children": [{"value": 2, "children": [{"value": 3}]}, {"value": 3, "end": true, "children": [{"value": 4}]}]
 };
 console.log(dst(root))

@@ -32,3 +32,11 @@ class timeDictionary {
     return dict[key].values[dict[key].timestamp];
   }
 }
+
+let td = new timeDictionary();
+td.put("a", 1)
+console.log(td.get("a", 0))
+td.put("a", 2)
+console.log(td.get("a", 1))
+td.put("a", 2)
+console.log(td.get("a", 2))

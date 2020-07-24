@@ -1,10 +1,13 @@
 class timeDictionary {
   constructor() {
     this.dict = {};
+    this.validateKey = function(key) {
+       if (!key || key.length) throw new "ArgumentOutOfRangeException";
+    }
   }
   
-  change(key, value) {
-    if (!key) throw new "ArgumentOutOfRangeException";
+  put(key, value) {
+    validateKey(key);
     
     if (!dict[key]) {
       dict[key] = {
@@ -20,5 +23,12 @@ class timeDictionary {
       dict[key].timestamp++;
       dict[key][dict[key].timestamp] = value;
     }
+  }
+  
+  get(key, time) {
+    validateKey(key);
+    
+    if (!dict[key] || timestamp > dict[key].timestamp) throw new "ArgumentOutOfRangeException";
+    return dict[key].values[dict[key].timestamp];
   }
 }

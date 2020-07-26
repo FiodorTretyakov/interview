@@ -10,7 +10,7 @@ class lru {
         "next": this.head,
         "value": e
     }
-    if (!this.hash[e])) {
+    if (!this.hash[e]) {
       if (this.length == this.size) {
         this.hash[this.tail.value] = null;
         this.tail = this.tail && this.tail.prev ? this.tail.prev : null;
@@ -35,18 +35,18 @@ class lru {
   }
 }
 
-let lru = new lru(5):
-lru.put(5);
-console.log(lru.get()));
-lru.put(5);
-console.log(lru.get()));
-lru.put(3);
-console.log(lru.get()));
-lru.put(2);
-console.log(lru.get()));
-lru.put(1);
-console.log(lru.get()));
-lru.put(4);
-console.log(lru.get()));
-lru.put(2);
-console.log(lru.get()));
+let cache = new lru(5):
+cache.put(5);
+console.log(cache.get()));
+cache.put(5);
+console.log(cache.get()));
+cache.put(3);
+console.log(cache.get()));
+cache.put(2);
+console.log(cache.get()));
+cache.put(1);
+console.log(cache.get()));
+cache.put(4);
+console.log(cache.get()));
+cache.put(2);
+console.log(cache.get()));

@@ -18,7 +18,7 @@ class lru {
         this.length++;
       }
     } else {
-      this.hash[e].prev = this.hash[e].prev && this.hash[e].prev.prev  ? this.hash[e].prev.prev : (this.length === 1 ? null: this.head);
+      this.hash[e].prev = this.hash[e].prev && this.hash[e].prev.prev  ? this.hash[e].prev.prev : (this.length < 2 ? null: this.head);
     }
     this.hash[e] = this.head;
   }

@@ -6,24 +6,40 @@ class lru {
   }
     
   put(e) {
-    this.head = {
-        "next": this.head && e === this.head.value ? null : this.head,
+    if (!this.head) {
+      this.head = {
         "value": e
+      };
+      this.tail = this.head;
+      this.hash[e] = this.head;
+      return;
     }
-    if (!this.hash[e]) {
+    
+    if (this.hash[e]) {
+      if (this.hash[e].prev) {
+        if (this.hash[e].next) {
+          this.hash[e].prev.next = this.hash[e].next;
+          this.hash[e].next.prev = this.hash[e].prev;
+        } else {
+          this.tail = this.hash[e].prev;
+        }
+      } else {
+        return;
+      }
+    } else {
       if (this.length == this.size) {
-        this.hash[this.tail.value] = null;
-        this.tail = this.tail && this.tail.prev ? this.tail.prev : null;
+        let taildId = this.tail.value;
+        if (this.tail.prev) {
+          this.tail = this.tail.prev;
+        }
+        this.hash[tailId] = null;
       } else {
         this.length++;
       }
-    } else {
-      this.hash[e].prev = this.hash[e].prev && this.hash[e].prev.prev ? this.hash[e].prev.prev : (this.length < 2 ? null: this.head);
-      if (this.hash[e].prev) {
-         this.hash[e].prev.next = this.hash[e].next && this.hash[e].next.next ? this.hash[e].next.next : null;
-      }
+      this.head = {
+        "next": this.head,
+        "value": e
     }
-    this.hash[e] = this.head;
   }
 
   get() {

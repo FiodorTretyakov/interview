@@ -37,16 +37,16 @@ class lru {
 
 let cache = new lru(5);
 cache.put(5);
-console.log(cache.get()));
+console.log(cache.get());
 cache.put(5);
-console.log(cache.get()));
+console.log(cache.get());
 cache.put(3);
-console.log(cache.get()));
+console.log(cache.get());
 cache.put(2);
-console.log(cache.get()));
+console.log(cache.get());
 cache.put(1);
-console.log(cache.get()));
+console.log(cache.get());
 cache.put(4);
-console.log(cache.get()));
+console.log(cache.get());
 cache.put(2);
-console.log(cache.get()));
+console.log(cache.get());

@@ -10,13 +10,43 @@ class lru {
         "next": this.head,
         "value": e
     }
-    this.hash[e] = this.head;
     if (!this.hash[e])) {
       if (this.length == this.size) {
-        this.tail = this.tail && this.tail.prev ? this.tail.prev : null; 
+        this.hash[this.tail.value] = null;
+        this.tail = this.tail && this.tail.prev ? this.tail.prev : null;
+      } else {
+        this.length++;
       }
     } else {
       this.hash[e].prev = this.hash[e].prev && this.hash[e].prev.prev  ? this.hash[e].prev.prev : (this.length === 1 ? null: this.head);
     }
+    this.hash[e] = this.head;
+  }
+
+  get() {
+    let it = this.head;
+    let result = [];
+    while (it) {
+      result.push(it.value);
+      it = it.next;
+    }
+
+    return result;
   }
 }
+
+let lru = new lru(5):
+lru.put(5);
+console.log(lru.get()));
+lru.put(5);
+console.log(lru.get()));
+lru.put(3);
+console.log(lru.get()));
+lru.put(2);
+console.log(lru.get()));
+lru.put(1);
+console.log(lru.get()));
+lru.put(4);
+console.log(lru.get()));
+lru.put(2);
+console.log(lru.get()));

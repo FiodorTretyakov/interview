@@ -7,7 +7,7 @@ class lru {
     
   put(e) {
     this.head = {
-        "next": this.head,
+        "next": this.head && e === this.head.value ? null : this.head,
         "value": e
     }
     if (!this.hash[e]) {
@@ -18,7 +18,10 @@ class lru {
         this.length++;
       }
     } else {
-      this.hash[e].prev = this.hash[e].prev && this.hash[e].prev.prev  ? this.hash[e].prev.prev : (this.length < 2 ? null: this.head);
+      this.hash[e].prev = this.hash[e].prev && this.hash[e].prev.prev ? this.hash[e].prev.prev : (this.length < 2 ? null: this.head);
+      if (this.hash[e].prev) {
+         this.hash[e].prev.next = this.hash[e].next && this.hash[e].next.next ? this.hash[e].next.next : null;
+      }
     }
     this.hash[e] = this.head;
   }

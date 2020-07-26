@@ -6,7 +6,6 @@ class lru {
   }
     
   put(e) {
-    console.log(this.hash);
     if (this.hash[e]) {
       if (this.hash[e].prev) {
         if (this.hash[e].next) {

@@ -6,15 +6,7 @@ class lru {
   }
     
   put(e) {
-    if (!this.head) {
-      this.head = {
-        "value": e
-      };
-      this.tail = this.head;
-      this.hash[e] = this.head;
-      return;
-    }
-    
+    console.log(this.hash);
     if (this.hash[e]) {
       if (this.hash[e].prev) {
         if (this.hash[e].next) {
@@ -23,23 +15,33 @@ class lru {
         } else {
           this.tail = this.hash[e].prev;
         }
+        this.hash[e] = null;
+        this.length--;
       } else {
         return;
       }
-    } else {
-      if (this.length == this.size) {
+    }
+    
+    if (this.length == this.size) {
         let taildId = this.tail.value;
         if (this.tail.prev) {
           this.tail = this.tail.prev;
         }
         this.hash[tailId] = null;
-      } else {
-        this.length++;
-      }
-      this.head = {
+    } else {
+      this.length++;
+    }       
+      let el = {
         "next": this.head,
         "value": e
-    }
+      };
+      if (this.length == 1) {
+        this.tail = el;
+      } else {
+        this.head.prev = el;
+      }
+      this.hash[e] = el;
+      this.head = el;
   }
 
   get() {

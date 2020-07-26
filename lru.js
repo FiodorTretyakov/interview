@@ -35,7 +35,7 @@ class lru {
   }
 }
 
-let cache = new lru(5):
+let cache = new lru(5);
 cache.put(5);
 console.log(cache.get()));
 cache.put(5);

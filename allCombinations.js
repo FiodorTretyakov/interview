@@ -8,7 +8,7 @@ function getAll(a) {
     
     if (e.index < a.length - 1) {
       for (let i = 0; i < signs.length; i++) {
-        q.push({"index": e.index + 1, "path": e.path + a[e.index + 1] + (e.index < a.length - 2 ? signs[i] : "")});
+        q.push({"index": e.index + 1, "path": e.path + signs[i] + a[e.index + 1]});
       }
     } else {
       paths.push(e.path);
@@ -32,4 +32,4 @@ function getAll(a) {
   return result;
 }
 
-console.log(getAll("32412433"));
+console.log(getAll("121"));

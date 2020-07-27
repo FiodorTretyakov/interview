@@ -21,12 +21,13 @@ function getAll(a) {
     let pluses = paths[i].split(signs[1]);
     for (let j = 0; j < pluses.length; j++) {
       let minuses = pluses[j].split(signs[2]);
-      let mSum = minuses[0];
+      let mSum = parseInt(minuses[0]);
       for (let k = 1; k < minuses.length; k ++) {
-        mSum -= minuses[k];
+        mSum -= parseInt(minuses[k]);
       }
       sum += mSum;
     }
+    result.push(sum);
   }
     
   return result;

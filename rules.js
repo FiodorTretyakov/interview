@@ -33,8 +33,18 @@ function checkRules(c, r) {
 }
 
 function checkRule(c, e) {
-  let rule = e.split(">", <, >=, <=, ==, !=");
+  let splitters = [">", "<", ">=", "<=", "==", "!="];
+  
+  for (let i = 0; i < splitters.length; i++) {
+    if (e.indexOf(splitters[i] > -1) {
+      let vp = e.split(splitters[i]);
+      return eval(c[vp[0]] + splitters[i] + vp[1];
+    }
+  }
+  return false;
 }
+                     
+
 
 function getPred(o, p) {
   let f = o.filter(e => e.startsWith(p));
@@ -52,3 +62,5 @@ function getDictionary(o) {
   }
   return result;                
 }
+
+console.log("["CHARGE:card_country=US&currency=USD&amount=250&ip_country=CA","ALLOW:amount>500", ]");

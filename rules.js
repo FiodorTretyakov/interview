@@ -63,4 +63,4 @@ function getDictionary(o) {
   return result;                
 }
 
-console.log(isAllowed("["CHARGE:card_country=US&currency=USD&amount=250&ip_country=CA","ALLOW:amount>500", ]"));
+console.log(isAllowed("['CHARGE:card_country=US&currency=USD&amount=250&ip_country=CA','ALLOW:amount>500', ]"));

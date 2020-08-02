@@ -5,11 +5,11 @@ function isAllowed(t) {
   let blocks = getPred(o, "BLOCK");
   
   for (let i = 0; i < allows.length; i++) {
-    if (!checkRules(charge, allows[i]) return false;
+    if (!checkRules(charge, allows[i])) return false;
   }
         
   for (let i = 0; i < blocks.length; i++) {
-    if (checkRules(charge, blocks[i]) return false;
+    if (checkRules(charge, blocks[i])) return false;
   }
   
   return true;
@@ -36,9 +36,9 @@ function checkRule(c, e) {
   let splitters = [">", "<", ">=", "<=", "==", "!="];
   
   for (let i = 0; i < splitters.length; i++) {
-    if (e.indexOf(splitters[i] > -1) {
+    if (e.indexOf(splitters[i] > -1)) {
       let vp = e.split(splitters[i]);
-      return eval(c[vp[0]] + splitters[i] + vp[1];
+      return eval(c[vp[0]] + splitters[i] + vp[1]);
     }
   }
   return false;
@@ -59,8 +59,8 @@ function getDictionary(o) {
   let obj = o.map(e => {
     let vp = e.split("=");
     result[vp[0]] = vp[1];
-  }
+  });
   return result;                
 }
 
-console.log("["CHARGE:card_country=US&currency=USD&amount=250&ip_country=CA","ALLOW:amount>500", ]");
+console.log(isAllowed("["CHARGE:card_country=US&currency=USD&amount=250&ip_country=CA","ALLOW:amount>500", ]"));

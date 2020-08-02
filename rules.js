@@ -1,5 +1,5 @@
 function isAllowed(t) {
-  let t = splitByCommas(t);
+  t = splitByCommas(t);
   let charge = getDictionary(getPred(t, "CHARGE"));
   let allows = getPred(t, "ALLOW");
   let blocks = getPred(t, "BLOCK");
@@ -16,14 +16,14 @@ function isAllowed(t) {
 }
 
 function splitByCommas(t) {
-  return t.split(",").map(e => e.replace("[", "").replace("]", "").replace("'", "").replace(" ", "");
+  return t.split(",").map(e => e.replace("[", "").replace("]", "").replace("'", "").replace(" ", ""));
 }
        
 function checkRules(c, r) {
   let ors = r.split("OR");
   
   for (let i = 0; i < ors.length; i++) {
-    let ands = ors.split("AND");
+    let ands = ors[i].split("AND");
     for (let j = 0; j < ands.length; j++) {
       if (!checkRule(c, ands[j])) {
         continue;

@@ -1,8 +1,8 @@
 function isAllowed(t) {
-  let o = JSON.parse(t);
-  let charge = getDictionary(getPred(o, "CHARGE"));
-  let allows = getPred(o, "ALLOW");
-  let blocks = getPred(o, "BLOCK");
+  let t = splitByCommas(t);
+  let charge = getDictionary(getPred(t, "CHARGE"));
+  let allows = getPred(t, "ALLOW");
+  let blocks = getPred(t, "BLOCK");
   
   for (let i = 0; i < allows.length; i++) {
     if (!checkRules(charge, allows[i])) return false;
@@ -13,6 +13,10 @@ function isAllowed(t) {
   }
   
   return true;
+}
+
+function splitByCommas(t) {
+  return t.split(",").map(e => e.replace("[", "").replace("]", "").replace("'", "").replace(" ", "");
 }
        
 function checkRules(c, r) {

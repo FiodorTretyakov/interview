@@ -46,9 +46,7 @@ function checkRule(c, e) {
     }
   }
   return false;
-}
-                     
-
+}                
 
 function getPred(o, p) {
   let f = o.filter(e => e.startsWith(p));
@@ -60,7 +58,7 @@ function getPred(o, p) {
 
 function getDictionary(o) {
   let result = {};
-  let obj = o.map(e => {
+  let obj = o[0].split("&").map(e => {
     let vp = e.split("=");
     result[vp[0]] = vp[1];
   });

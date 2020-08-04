@@ -12,7 +12,7 @@ function brackets(n) {
     }
   }
 
-  return stack.reverse().map(e => pairs[e]).join();
+  return stack.reverse().map(e => pairs[e]).join('');
 }
 
 console.log(brackets(""));

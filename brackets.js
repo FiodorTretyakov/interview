@@ -20,4 +20,4 @@ console.log(brackets("("));
 console.log(brackets("()"));
 console.log(brackets("()[]"));
 console.log(brackets("(())"));
-console.log(brackets("(([)"));
+console.log(brackets("(([])"));
